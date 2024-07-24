@@ -1,10 +1,6 @@
 {
   "expo": {
-<<<<<<< HEAD
-    "name": "My Room",
-=======
     "name": "my-room",
->>>>>>> f148f5c (sync)
     "slug": "my-room",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,23 +13,13 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-<<<<<<< HEAD
-      "supportsTablet": true,
-      "bundleIdentifier": "com.petey01org.myroom"
-=======
       "supportsTablet": true
->>>>>>> f148f5c (sync)
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-<<<<<<< HEAD
-      },
-      "package": "com.petey01org.myroom"
-=======
       }
->>>>>>> f148f5c (sync)
     },
     "web": {
       "bundler": "metro",
@@ -45,21 +31,6 @@
     ],
     "experiments": {
       "typedRoutes": true
-<<<<<<< HEAD
-    },
-    "extra": {
-      "eas": {
-        "projectId": "a2221aab-a4ef-400d-a4f4-8286ed9a9fc1"
-      }
-    },
-    "owner": "petey.01-org",
-    "updates": {
-      "url": "https://u.expo.dev/a2221aab-a4ef-400d-a4f4-8286ed9a9fc1"
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
-=======
->>>>>>> f148f5c (sync)
     }
   }
 }
