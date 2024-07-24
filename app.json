@@ -1,6 +1,10 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "My Room",
+=======
+    "name": "my-room",
+>>>>>>> f148f5c (sync)
     "slug": "my-room",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,15 +17,23 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+<<<<<<< HEAD
       "supportsTablet": true,
       "bundleIdentifier": "com.petey01org.myroom"
+=======
+      "supportsTablet": true
+>>>>>>> f148f5c (sync)
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+<<<<<<< HEAD
       },
       "package": "com.petey01org.myroom"
+=======
+      }
+>>>>>>> f148f5c (sync)
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +45,7 @@
     ],
     "experiments": {
       "typedRoutes": true
+<<<<<<< HEAD
     },
     "extra": {
       "eas": {
@@ -45,6 +58,8 @@
     },
     "runtimeVersion": {
       "policy": "appVersion"
+=======
+>>>>>>> f148f5c (sync)
     }
   }
 }
