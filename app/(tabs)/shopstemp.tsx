@@ -17,7 +17,7 @@ export default function Temp() {
       {/*body view*/}
       <View style={{flexDirection: 'row', flex: 1}}>
         {/*category column*/}
-        <View style={{flex: 0.8, height: '100%'}}>
+        <View style={{flex: 4, height: '100%'}}>
           <View style={styles.categoryView}>
             <Text style={[styles.textStyle, {color: '#A1663C'}]}>tops</Text>
           </View>
@@ -31,7 +31,7 @@ export default function Temp() {
         {/*items diplay*/}
         <View style={styles.displayView}>
           <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
-            <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-evenly'}}>
+            <View style={{flexWrap: 'wrap', flexDirection: 'row'}}>
               <View style={styles.circleView}>
                 <View style={styles.circle}></View>
                 <Text style={[styles.textStyle]}>mint-t-shirt</Text>
@@ -60,18 +60,20 @@ export default function Temp() {
           </ScrollView>
         </View>
         {/*items info*/}
-        <View style={{backgroundColor: '#503D32', flex: 1, height: '100%', justifyContent: 'space-between'}}>
+        <View style={{backgroundColor: '#503D32', flex: 5, height: '100%', justifyContent: 'space-between'}}>
+          {/*description*/}
           <View style={{margin: scale*11,}}>
             <Text style={[styles.textStyle, {fontSize: 11*scale, color: '#D9D9D9', textAlign: 'left'}]}>Light green and airy t-shirt perfect for summer. Somehow, it feels refreshing when worn.</Text>
           </View>
-          <View style={{}}>
-          <Pressable onPress={() => console.log('Hello')} style={styles.buttonStyle}>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex:1}}>
-                  <Text style={[styles.textStyle]}>buy (</Text>
-                  <Text style={[styles.textStyle]}>200</Text>
-                  <Text style={[styles.textStyle]}>)</Text>
-                </View>
-              </Pressable>
+          {/*button*/}
+          <View>
+            <Pressable onPress={() => console.log('buy')} style={styles.buttonStyle}>
+              <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex:1}}>
+                <Text style={[styles.textStyle]}>buy (</Text>
+                <Text style={[styles.textStyle]}>200</Text>
+                <Text style={[styles.textStyle]}>)</Text>
+              </View>
+            </Pressable>
           </View>
         </View>
       </View>
@@ -112,14 +114,17 @@ const styles = StyleSheet.create({
     borderRadius: scale2*25,
     backgroundColor: '#D9D9D9',
     overflow: 'hidden',
+    marginLeft: width*11/228,
+    marginRight: width*11/228,
   },
   circleView: {
     justifyContent: 'center', 
-    margin: '5%',
+    marginTop: '5%',
+    marginBottom: '5%',
   },
   displayView: {
     backgroundColor: '#A1663C', 
-    flex: 2, 
+    flex: 10, 
     height: '100%', 
   },
   buttonStyle: {
