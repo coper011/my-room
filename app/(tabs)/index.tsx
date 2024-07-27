@@ -22,7 +22,7 @@ export default function HomeScreen() {
     setOrientation(o);
   };
   return (
-    <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: 'center'}}>
+    <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignContent: 'center'}}>
       <ScrollView style={{width: '100%'}}>
       {/*login title*/}
       <View style={styles.titleContainer}>
@@ -54,7 +54,7 @@ export default function HomeScreen() {
         <View style={{marginTop: 20}}>
           <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOGIN w/ Google</Text></Pressable>
         </View>
-        <View>
+        <View style={{marginBottom: 40}}>
           <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOGIN w/ Meta</Text></Pressable>
         </View>
       </View>

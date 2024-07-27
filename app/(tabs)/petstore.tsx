@@ -49,9 +49,6 @@ export default function Petstore() {
             <View style={[styles.circle, {backgroundColor: 'black', zIndex: 1, flex: 0, position: 'absolute', opacity: 0.65}]}>
 
             </View>
-            <View style={[styles.circle, {backgroundColor: 'black', zIndex: 1, flex: 0, position: 'absolute', opacity: 0.65}]}>
-
-            </View>
           </ScrollView>
         </View>
         {/*Pet display*/}

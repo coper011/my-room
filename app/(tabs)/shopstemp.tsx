@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const { width } = Dimensions.get('window');
 const scale = Math.sqrt(width)/15;
+const scale2 = width/300;
 
 export default function Temp() {
   
@@ -17,14 +18,62 @@ export default function Temp() {
       <View style={{flexDirection: 'row', flex: 1}}>
         {/*category column*/}
         <View style={{flex: 0.8, height: '100%'}}>
-          <View style={styles.categoryView}></View>
-          <View style={styles.categoryView}></View>
-          <View style={styles.categoryView}></View>
+          <View style={styles.categoryView}>
+            <Text style={[styles.textStyle, {color: '#A1663C'}]}>tops</Text>
+          </View>
+          <View style={styles.categoryView}>
+            <Text style={[styles.textStyle, {color: '#503D32'}]}>bottoms</Text>
+          </View>
+          <View style={styles.categoryView}>
+            <Text style={[styles.textStyle, {color: '#503D32'}]}>shoes</Text>
+          </View>
         </View>
         {/*items diplay*/}
-        <View style={{backgroundColor: '#A1663C', flex: 2, height: '100%'}}></View>
+        <View style={styles.displayView}>
+          <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
+            <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-evenly'}}>
+              <View style={styles.circleView}>
+                <View style={styles.circle}></View>
+                <Text style={[styles.textStyle]}>mint-t-shirt</Text>
+              </View>
+              <View style={styles.circleView}>
+                <View style={styles.circle}></View>
+                <Text style={[styles.textStyle]}>mint-t-shirt</Text>
+              </View>
+              <View style={styles.circleView}>
+                <View style={styles.circle}></View>
+                <Text style={[styles.textStyle]}>mint-t-shirt</Text>
+              </View>
+              <View style={styles.circleView}>
+                <View style={styles.circle}></View>
+                <Text style={[styles.textStyle]}>mint-t-shirt</Text>
+              </View>
+              <View style={styles.circleView}>
+                <View style={styles.circle}></View>
+                <Text style={[styles.textStyle]}>mint-t-shirt</Text>
+              </View>
+              <View style={styles.circleView}>
+                <View style={styles.circle}></View>
+                <Text style={[styles.textStyle]}>mint-t-shirt</Text>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
         {/*items info*/}
-        <View style={{backgroundColor: '#503D32', flex: 1, height: '100%'}}></View>
+        <View style={{backgroundColor: '#503D32', flex: 1, height: '100%', justifyContent: 'space-between'}}>
+          <View style={{margin: scale*11,}}>
+            <Text style={[styles.textStyle, {fontSize: 11*scale, color: '#D9D9D9', textAlign: 'left'}]}>Light green and airy t-shirt perfect for summer. Somehow, it feels refreshing when worn.</Text>
+          </View>
+          <View style={{}}>
+          <Pressable onPress={() => console.log('Hello')} style={styles.buttonStyle}>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex:1}}>
+                  <Text style={[styles.textStyle]}>buy (</Text>
+                  <Text style={[styles.textStyle]}>200</Text>
+                  <Text style={[styles.textStyle]}>)</Text>
+                </View>
+              </Pressable>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -47,10 +96,38 @@ const styles = StyleSheet.create({
     width: '100%', 
     height: scale * 30,
     borderBottomWidth: scale * 2,
-    borderBottomColor: '#503D32',
-    opacity: 0.5,
+    borderBottomColor: 'rgba(80, 61, 50, .5)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textStyle: {
+    fontFamily: 'NerkoOne',
+    fontSize: 15 * scale,
+    color: '#503D32',
+    textAlign: 'center',
+  },
+  circle: {
+    width: scale2*50,
+    height: scale2*50,
+    borderRadius: scale2*25,
+    backgroundColor: '#D9D9D9',
+    overflow: 'hidden',
+  },
+  circleView: {
+    justifyContent: 'center', 
+    margin: '5%',
+  },
+  displayView: {
+    backgroundColor: '#A1663C', 
+    flex: 2, 
+    height: '100%', 
+  },
+  buttonStyle: {
+    alignSelf: 'center', 
+    backgroundColor: '#C7A579',
+    width: '80%',
+    height: 25 * scale,
+    borderRadius: 8 * scale,
+    marginBottom: '10%',
   },
 });
-
-
-
