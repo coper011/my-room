@@ -22,39 +22,41 @@ export default function HomeScreen() {
     setOrientation(o);
   };
   return (
-    <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
+    <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: 'center'}}>
       <ScrollView style={{width: '100%'}}>
       {/*login title*/}
       <View style={styles.titleContainer}>
         <Text style={{fontFamily: "NerkoOne", fontSize: 40, color: '#C7A579', textAlign: 'center'}}>login</Text>
       </View>
       {/*username and password input boxes*/}
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle" style={styles.textStyle}>username:</ThemedText>
-        <TextInput 
-        style={styles.textInputStyle}
-        placeholder='   copperstudies'
-        maxLength= {10}
-        />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle" style={styles.textStyle}>password:</ThemedText>
-        <TextInput 
-        style={styles.textInputStyle}
-        placeholder='   password123'
-        maxLength= {20}
-        />
-      {/*login buttons*/}
-      </ThemedView>
-      <View style={{marginTop: 20}}>
-        <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOG IN</Text></Pressable>
-        <Pressable style={{marginTop: 5}}><Text style={{color: '#2E2929', fontFamily: "NerkoOne", textAlign: 'center'}}>REGISTER</Text></Pressable>
-      </View>
-      <View style={{marginTop: 20}}>
-        <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOGIN w/ Google</Text></Pressable>
-      </View>
-      <View>
-        <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOGIN w/ Meta</Text></Pressable>
+      <View style={{width: '100%', alignItems: 'center'}}>
+        <ThemedView style={styles.stepContainer}>
+          <ThemedText type="subtitle" style={styles.textStyle}>username:</ThemedText>
+          <TextInput 
+          style={styles.textInputStyle}
+          placeholder='   copperstudies'
+          maxLength= {10}
+          />
+        </ThemedView>
+        <ThemedView style={styles.stepContainer}>
+          <ThemedText type="subtitle" style={styles.textStyle}>password:</ThemedText>
+          <TextInput 
+          style={styles.textInputStyle}
+          placeholder='   password123'
+          maxLength= {20}
+          />
+        {/*login buttons*/}
+        </ThemedView>
+        <View style={{marginTop: 20}}>
+          <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOG IN</Text></Pressable>
+          <Pressable style={{marginTop: 5}}><Text style={{color: '#2E2929', fontFamily: "NerkoOne", textAlign: 'center'}}>REGISTER</Text></Pressable>
+        </View>
+        <View style={{marginTop: 20}}>
+          <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOGIN w/ Google</Text></Pressable>
+        </View>
+        <View>
+          <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOGIN w/ Meta</Text></Pressable>
+        </View>
       </View>
       </ScrollView>
     </View>
