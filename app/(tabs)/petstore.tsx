@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, ImageBackground, View, TextInput, Pressable, Text, ScrollView, Dimensions  } from 'react-native';
+import { Image, StyleSheet, Platform, ImageBackground, View, TextInput, Pressable, Text, ScrollView, Dimensions, SafeAreaView } from 'react-native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { useEffect, useState } from "react";
 
@@ -16,37 +16,40 @@ export default function Petstore() {
       {/*Main view*/}
       <View style={{flex:1, flexDirection: 'row', width: '100%'}}>
         {/*Scroll column*/}
-        <View style={{height: '100%', flex: 1, width: '100%', alignItems: 'center'}}>
-          <ScrollView style={{width: '100%'}}>
+        <View style={{height: '100%', flex: 1, width: '100%'}}>
+          <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
             {/*copper*/}
             <View style={styles.circle}>
-              
+            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
             </View>
             {/*benji*/}
             <View style={styles.circle}>
-
+            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
             </View>
             {/*kitty*/}
             <View style={styles.circle}>
-
+            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
             </View>
             {/*lulu*/}
             <View style={styles.circle}>
-
+            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
             </View>
             {/*gros chat*/}
-            <View style={[styles.circle, {overflow: 'hidden'}]}>
-              <Image source={require('@/assets/images/xuncat.png')} style={{resizeMode: 'contain', width:'100%', height: '100%', overflow: 'hidden'}}></Image>
+            <View style={[styles.circle]}>
+              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
             </View>
             {/*alan in loopi drip*/}
             <View style={styles.circle}>
-
+            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
             </View>
             {/*lev*/}
             <View style={styles.circle}>
+            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+            </View>
+            <View style={[styles.circle, {backgroundColor: 'black', zIndex: 1, flex: 0, position: 'absolute', opacity: 0.65}]}>
 
             </View>
-            <View style={[styles.circle, {backgroundColor: 'black', zIndex: 1, flex: 0, position: 'absolute', opacity: 0.4}]}>
+            <View style={[styles.circle, {backgroundColor: 'black', zIndex: 1, flex: 0, position: 'absolute', opacity: 0.65}]}>
 
             </View>
           </ScrollView>
@@ -130,14 +133,13 @@ const styles = StyleSheet.create({
     marginBottom: '10%',
   },
   circle: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: scale*40,
+    height: scale*40,
+    borderRadius: scale*20,
     backgroundColor: '#503D32',
-    flex: 1,
     marginTop: '20%',
-    marginLeft: '15%',
-    zIndex: 0,
+    overflow: 'hidden',
+    alignSelf: 'center',
   },
   petImage: {
     resizeMode: 'contain', 
@@ -147,5 +149,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: '#C7A579',
     borderWidth: scale * 5,
+  },
+  petIcon: {
+    resizeMode: 'contain', 
+    width:'100%', 
+    height: '100%', 
   }
 });
