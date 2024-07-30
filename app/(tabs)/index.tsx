@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3C402F',
     width: '100%',
     paddingTop: 20,
-    paddingBottom: 10,
+    paddingBottom: 5,
   },
   stepContainer: {
     marginTop: 20,

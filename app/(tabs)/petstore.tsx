@@ -20,34 +20,37 @@ export default function Petstore() {
           <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
             {/*copper*/}
             <View style={styles.circle}>
-            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
             </View>
             {/*benji*/}
             <View style={styles.circle}>
-            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <View style={[styles.unlockCircle]}></View>
             </View>
             {/*kitty*/}
             <View style={styles.circle}>
-            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <View style={[styles.unlockCircle]}></View>
             </View>
             {/*lulu*/}
             <View style={styles.circle}>
-            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <View style={[styles.unlockCircle]}></View>
             </View>
             {/*gros chat*/}
-            <View style={[styles.circle]}>
+            <View style={styles.circle}>
               <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <View style={[styles.unlockCircle]}></View>
             </View>
             {/*alan in loopi drip*/}
             <View style={styles.circle}>
-            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <View style={[styles.unlockCircle]}></View>
             </View>
             {/*lev*/}
-            <View style={styles.circle}>
-            <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-            </View>
-            <View style={[styles.circle, {backgroundColor: 'black', zIndex: 1, flex: 0, position: 'absolute', opacity: 0.65}]}>
-
+            <View style={[styles.circle, {marginBottom: '20%'}]}>
+              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
+              <View style={[styles.unlockCircle]}></View>
             </View>
           </ScrollView>
         </View>
@@ -137,6 +140,16 @@ const styles = StyleSheet.create({
     marginTop: '20%',
     overflow: 'hidden',
     alignSelf: 'center',
+  },
+  unlockCircle: {
+    width: scale*40,
+    height: scale*40,
+    borderRadius: scale*20,
+    alignSelf: 'center',
+    backgroundColor: 'black', 
+    flex: 0, 
+    position: 'absolute', 
+    opacity: 0.65, 
   },
   petImage: {
     resizeMode: 'contain', 
