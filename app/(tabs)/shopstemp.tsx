@@ -31,7 +31,7 @@ export default function Temp() {
         {/*items scroll diplay*/}
         <View style={styles.displayView}>
           <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
-            <View style={{flexWrap: 'wrap', flexDirection: 'row'}}>
+            <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent:'space-evenly', alignItems: 'center'}}>
               <View style={styles.circleView}>
                 <View style={styles.circle}></View>
                 <Text style={[styles.textStyle]}>mint-t-shirt</Text>
