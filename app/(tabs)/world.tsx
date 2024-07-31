@@ -6,6 +6,7 @@ import React from 'react';
 import Modal from "react-native-modal";
 
 const { width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 const scale = Math.sqrt(width)/15;
 const scale2 = width/300;
 
@@ -38,7 +39,7 @@ export default function World() {
         <View style={{flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}}>
           {/*inventory modal*/}
           <Pressable onPress={handleModal}><Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/></Pressable>
-          <Modal isVisible={isModalVisible}>
+          <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)/*Modal bug @ iPad landscape*/}>
             <View style={styles.popupStyle}>
               {/*inventory top row view*/}
               <View style={styles.popupTopRowStyle}>
