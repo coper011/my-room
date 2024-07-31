@@ -27,7 +27,7 @@ export default function World() {
   const handleCloset = () => setIsClosetVisible(() => !isClosetVisible);
 
   return (
-    <View style = {{backgroundColor: '#89AE80', width: '100%', height: '100%'}}>
+    <View style = {{backgroundColor: '#89AE80', flex: 1}}>
       {/*top row view*/}
       <View style={styles.titleView}>
         <View style={{flex: 1}}></View>
@@ -35,7 +35,7 @@ export default function World() {
         <Text style={styles.titleText}>My World</Text>
         </View>
         {/*stats view*/}
-        <View style={{flex: 1, justifyContent: 'flex-end', flexDirection: 'row', height: '100%'}}>
+        <View style={{flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}}>
           {/*inventory modal*/}
           <Pressable onPress={handleModal}><Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/></Pressable>
           <Modal isVisible={isModalVisible}>
@@ -325,7 +325,9 @@ export default function World() {
             </View>
           </Modal>
           <Text style={[styles.titleText, {fontSize: 30, marginRight: '2%'}]}>150</Text>
-          <Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/>
+          <View>{/*otherwise Image height 0*/}
+            <Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/>
+          </View>
           <View style={{justifyContent: 'center'}}>
             <View style={{flexDirection: 'row'}}>
               <Text style={[styles.titleText, {fontSize: 30,}]}>lvl </Text>
@@ -371,6 +373,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#3C402F',
     width: '100%',
+    height: 78,  //  not to occupy all height @ iPhone
     paddingBottom: 5,
   },
   path: {
