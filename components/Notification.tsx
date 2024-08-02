@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 //notepad and settings: h = scale2*140 br = 25
 
-export function Notification(content: string, eyeStep: boolean, buttonText: string, zIndex1: number, backdropOpacity1: number) {
+export function Notification(content: string, eyeStep: boolean, buttonText: string, functions: Array<any>, index: number, backdropOpacity1: number) {
 
   const { width } = Dimensions.get('window');
   const { height } = Dimensions.get('window');
@@ -26,8 +26,9 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
 
   function displayButton(){
     if (eyeStep) {
+      functions[index] = handleModal;
       return <View style={{justifyContent: 'flex-end', alignItems: 'flex-end', width: '100%', height: 'auto'}}>
-        <Pressable onPress={handleModal} style={{backgroundColor: '#C7A579', borderRadius: 7, marginRight: '5%',}}><Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: 'white'}}>{buttonText}</Text></Pressable>
+        <Pressable onPress={() => {handleModal();if(functions.length>index+1)functions[index+1]();}} style={{backgroundColor: '#C7A579', borderRadius: 10, marginRight: '5%', marginTop: '2%', padding: '1%', paddingLeft: '2%', paddingRight: '2%'}}><Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: 'white'}}>{buttonText}</Text></Pressable>
       </View>;
     }
   }
@@ -40,7 +41,6 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
       alignSelf: 'center', 
       borderRadius: scale*15,
       overflow: 'hidden',
-      zIndex: zIndex1,
     },
     popupTopRowStyle: {
       backgroundColor: '#144E52',
@@ -57,7 +57,7 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
     },
   });
 
-  const [isModalVisible, setIsModalVisible] = React.useState(true);
+  const [isModalVisible, setIsModalVisible] = React.useState(!eyeStep);
   const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
   return (<Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={900} backdropOpacity={backdropOpacity1}>

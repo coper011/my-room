@@ -15,7 +15,7 @@ export function EyeProtection() {
   const scale = Math.sqrt(width)/15;
   const scale2 = width/300;
 
-  let functions = new Array(4);
+  const functions = new Array(5);
 
   const styles = StyleSheet.create({
     popupStyle: {
@@ -25,7 +25,6 @@ export function EyeProtection() {
       alignSelf: 'center', 
       borderRadius: scale*15,
       overflow: 'hidden',
-      zIndex: 5,
     },
     popupTopRowStyle: {
       backgroundColor: '#144E52',
@@ -46,11 +45,11 @@ export function EyeProtection() {
   const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
   return <View>
-    {Notification('5. Look into the distance as far as you can for 30s.', true, 'done!', 0, 0.5)}
-    {Notification('4. Place your thumbs on your temples and use your pointer finger to scrape above and below your eyes for 30s. ', true, 'next step', 1, 0)}
-    {Notification('3. Find the points one finger away from your nose and massage the points in circular motion for 30s.', true, 'next step', 2, 0)}
-    {Notification('2. Pinch the top part of your nosebridge for 30s.', true, 'next step', 3, 0)}
-    {Notification('1. Massage the inner corner of your eyebrows in circular motion for 30s.', true, 'next step', 4, 0)}
+    {Notification('5. Look into the distance as far as you can for 30s.', true, 'done!', functions, 4, 0.5)}
+    {Notification('4. Place your thumbs on your temples and use your pointer finger to scrape above and below your eyes for 30s. ', true, 'next step', functions, 3, 0)}
+    {Notification('3. Find the points one finger away from your nose and massage the points in circular motion for 30s.', true, 'next step', functions, 2, 0)}
+    {Notification('2. Pinch the top part of your nosebridge for 30s.', true, 'next step', functions, 1, 0)}
+    {Notification('1. Massage the inner corner of your eyebrows in circular motion for 30s.', true, 'next step', functions, 0, 0)}
     <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={900} backdropOpacity={0}>
       <View style={styles.popupStyle}>
         {/*top row view*/}
@@ -67,7 +66,7 @@ export function EyeProtection() {
         <View style={{alignItems: 'center', justifyContent: 'center', height: '100%', flex: 1}}>
           <Text style={{fontFamily: 'NerkoOne', fontSize: scale*20, color: '#2E2929', textAlign: 'center'}}>protect your vision!</Text>
           <View style={{justifyContent: 'center', alignItems: 'center', width: '100%', height: 'auto'}}>
-            <Pressable onPress={handleModal} style={{backgroundColor: '#C7A579', borderRadius: 7, marginRight: '5%',}}><Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: 'white'}}>begin</Text></Pressable>
+            <Pressable onPress={()=>{handleModal();functions[0]();}} style={{backgroundColor: '#C7A579', borderRadius: 10, marginTop: '2%', padding: '1%', paddingLeft: '2%', paddingRight: '2%'}}><Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: 'white', textAlign: 'center'}}>begin</Text></Pressable>
           </View>
         </View>
       </View>
