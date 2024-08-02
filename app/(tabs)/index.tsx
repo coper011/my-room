@@ -1,9 +1,4 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { Image, StyleSheet } from 'react-native';
 import { View, TextInput, Pressable, Text, ScrollView } from "react-native";
 import React, { useState, useEffect } from 'react';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -26,27 +21,27 @@ export default function HomeScreen() {
       <ScrollView style={{width: '100%'}}>
       {/*login title*/}
       <View style={styles.titleContainer}>
-        <Text style={{fontFamily: "NerkoOne", fontSize: 40, color: '#C7A579', textAlign: 'center'}}>login</Text>
+        <Text style={{fontFamily: "NerkoOne", fontSize: 40, color: '#C7A579', marginTop: 20}}>Login</Text>
       </View>
       {/*username and password input boxes*/}
       <View style={{width: '100%', alignItems: 'center'}}>
-        <ThemedView style={styles.stepContainer}>
-          <ThemedText type="subtitle" style={styles.textStyle}>username:</ThemedText>
+        <View style={styles.stepContainer}>
+          <Text style={styles.textStyle}>username:</Text>
           <TextInput 
           style={styles.textInputStyle}
           placeholder='   copperstudies'
           maxLength= {10}
           />
-        </ThemedView>
-        <ThemedView style={styles.stepContainer}>
-          <ThemedText type="subtitle" style={styles.textStyle}>password:</ThemedText>
+        </View>
+        <View style={styles.stepContainer}>
+          <Text style={styles.textStyle}>password:</Text>
           <TextInput 
           style={styles.textInputStyle}
           placeholder='   password123'
           maxLength= {20}
           />
         {/*login buttons*/}
-        </ThemedView>
+        </View>
         <View style={{marginTop: 20}}>
           <Pressable style={styles.buttonStyle}><Text style={styles.buttonTextStyle}>LOG IN</Text></Pressable>
           <Pressable style={{marginTop: 5}}><Text style={{color: '#2E2929', fontFamily: "NerkoOne", textAlign: 'center'}}>REGISTER</Text></Pressable>
@@ -68,8 +63,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#3C402F',
     width: '100%',
-    paddingTop: 20,
     paddingBottom: 5,
+    height: 78,
   },
   stepContainer: {
     marginTop: 20,
