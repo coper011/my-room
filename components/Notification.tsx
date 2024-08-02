@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 //notepad and settings: h = scale2*140 br = 25
 
-export function Notification(content: string, eyeStep: boolean, buttonText: string, functions: Array<any>, index: number) {
+export function Notification(content: string, eyeStep: boolean, buttonText: string, zIndex1: number) {
 
   const { width } = Dimensions.get('window');
   const { height } = Dimensions.get('window');
@@ -26,9 +26,8 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
 
   function displayButton(){
     if (eyeStep) {
-      functions[index] = handleModal;
       return <View style={{justifyContent: 'flex-end', alignItems: 'flex-end', width: '100%', height: 'auto'}}>
-        <Pressable onPress={() => {handleModal(); functions[index+1]}} style={{backgroundColor: '#C7A579', borderRadius: 7, marginRight: '5%',}}><Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: 'white'}}>{buttonText}</Text></Pressable>
+        <Pressable onPress={handleModal} style={{backgroundColor: '#C7A579', borderRadius: 7, marginRight: '5%',}}><Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: 'white'}}>{buttonText}</Text></Pressable>
       </View>;
     }
   }
@@ -41,6 +40,7 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
       alignSelf: 'center', 
       borderRadius: scale*15,
       overflow: 'hidden',
+      zIndex: zIndex1,
     },
     popupTopRowStyle: {
       backgroundColor: '#144E52',
@@ -73,7 +73,7 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
         </View>
       </View>
       {/*body view*/}
-      <View style={{alignItems: 'center', justifyContent: 'center', height: '100%', flex: 9}}>
+      <View style={{alignItems: 'center', justifyContent: 'center', height: '100%', flex: 1}}>
         <Text style={{fontFamily: 'NerkoOne', fontSize: scale2*fontSize1, color: '#2E2929', textAlign: 'center'}}>{content}</Text>
         {displayButton()}
       </View>
