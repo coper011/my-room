@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Platform, ImageBackground, View, TextInput, Pressable, Text, ScrollView, Dimensions, } from 'react-native';
 import { TopRow } from '@/components/TopRow';
 import { Shop } from '@/components/Shop';
+import { EyeProtection } from '@/components/EyeProtection';
 
 const { width } = Dimensions.get('window');
 const scale = Math.sqrt(width)/15;
@@ -12,6 +13,7 @@ export default function itemShop() {
     <View style = {{flex: 1, backgroundColor: '#D9D9D9'}}>
       {/*title view*/}
       {TopRow('Item Shop')}
+      {EyeProtection()}
       {/*body view*/}
       {Shop(['desk', 'background', 'garden', 'decorations'], 
         [{

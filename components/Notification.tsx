@@ -4,16 +4,34 @@ import Modal from 'react-native-modal';
 
 //notepad and settings: h = scale2*140 br = 25
 
-//eye step size = 
-//non eye step size = scale*15
-
-export function Notification(content: string) {
+export function Notification(content: string, eyeStep: boolean, buttonText: string, functions: Array<any>, index: number) {
 
   const { width } = Dimensions.get('window');
   const { height } = Dimensions.get('window');
   const scale = Math.sqrt(width)/15;
   const scale2 = width/300;
 
+  //eye step size = scale*12 (for eye notids, fontSize=12)
+  //non-eye step size = scale*15 (for water notifs, fontSize=15)
+  let fontSize1 = 10;
+  if (eyeStep) {
+    fontSize1 = 8;
+  } 
+
+  function xButton(){
+    if (!eyeStep) {
+      return <Pressable onPress={handleModal}><Text style={[styles.popupTopRowTextStyle, {marginRight: scale2*5}]}>X</Text></Pressable>;
+    }
+  }
+
+  function displayButton(){
+    if (eyeStep) {
+      functions[index] = handleModal;
+      return <View style={{justifyContent: 'flex-end', alignItems: 'flex-end', width: '100%', height: 'auto'}}>
+        <Pressable onPress={() => {handleModal(); functions[index+1]}} style={{backgroundColor: '#C7A579', borderRadius: 7, marginRight: '5%',}}><Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: 'white'}}>{buttonText}</Text></Pressable>
+      </View>;
+    }
+  }
 
   const styles = StyleSheet.create({
     popupStyle: {
@@ -51,12 +69,13 @@ export function Notification(content: string) {
           <Text style={styles.popupTopRowTextStyle}>reminder!</Text>
         </View>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-          <Pressable onPress={handleModal}><Text style={[styles.popupTopRowTextStyle, {marginRight: scale2*5}]}>X</Text></Pressable>
+          {xButton()}
         </View>
       </View>
       {/*body view*/}
       <View style={{alignItems: 'center', justifyContent: 'center', height: '100%', flex: 9}}>
-        <Text style={{fontFamily: 'NerkoOne', fontSize: scale*12, color: '#2E2929', textAlign: 'center'}}>{content}</Text>
+        <Text style={{fontFamily: 'NerkoOne', fontSize: scale2*fontSize1, color: '#2E2929', textAlign: 'center'}}>{content}</Text>
+        {displayButton()}
       </View>
     </View>
 </Modal>);
