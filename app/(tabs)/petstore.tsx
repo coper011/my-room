@@ -11,7 +11,7 @@ export default function Petstore() {
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
       {/*Pet Center title view*/}
       {TopRow('Pet Center')}
-      {Notification('get up and move around!', false, '')}
+      {Notification('get up and move around!', false, '', 0, 0.5)}
       {/*Main view*/}
       <View style={{flex:1, flexDirection: 'row', width: '100%'}}>
         {/*Scroll column*/}

@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 //notepad and settings: h = scale2*140 br = 25
 
-export function Notification(content: string, eyeStep: boolean, buttonText: string, zIndex1: number) {
+export function Notification(content: string, eyeStep: boolean, buttonText: string, zIndex1: number, backdropOpacity1: number) {
 
   const { width } = Dimensions.get('window');
   const { height } = Dimensions.get('window');
@@ -60,7 +60,7 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
   const [isModalVisible, setIsModalVisible] = React.useState(true);
   const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
-  return (<Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={900}>
+  return (<Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={900} backdropOpacity={backdropOpacity1}>
     <View style={styles.popupStyle}>
       {/*top row view*/}
       <View style={styles.popupTopRowStyle}>
