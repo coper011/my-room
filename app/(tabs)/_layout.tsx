@@ -39,21 +39,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="popuptemp"
+        name="clothingoutlet"
         options={{
-          title: 'Popup',
+          title: 'clothing',
         }}
       />
       <Tabs.Screen
-        name="shopstemp"
+        name="itemshop"
         options={{
-          title: 'Shops',
-        }}
-      />
-      <Tabs.Screen
-        name="settingsnotestemp"
-        options={{
-          title: 'Settings',
+          title: 'items',
         }}
       />
     </Tabs>

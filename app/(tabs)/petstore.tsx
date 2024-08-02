@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Platform, ImageBackground, View, TextInput, Pressable, Text, ScrollView, Dimensions, } from 'react-native';
 import { TopRow } from '@/components/TopRow';
+import { Notification } from '@/components/Notification';
 
 const { width } = Dimensions.get('window');
 const scale = Math.sqrt(width)/15;
@@ -10,6 +11,7 @@ export default function Petstore() {
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
       {/*Pet Center title view*/}
       {TopRow('Pet Center')}
+      {Notification('get water')}
       {/*Main view*/}
       <View style={{flex:1, flexDirection: 'row', width: '100%'}}>
         {/*Scroll column*/}
