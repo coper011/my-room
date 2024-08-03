@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
+    "@gluestack-ui/checkbox": "^0.1.30",
     "@gluestack-ui/icon": "^0.1.22",
     "@gluestack-ui/nativewind-utils": "^1.0.22",
     "@gluestack-ui/overlay": "^0.1.15",

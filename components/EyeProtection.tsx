@@ -45,12 +45,12 @@ export function EyeProtection() {
   const handleModal = () => setIsModalVisible(!isModalVisible);
 
   return <View>
-    {Notification('5. Look into the distance as far as you can for 30s.', true, 'done!', functions, 4, 0.5)}
-    {Notification('4. Place your thumbs on your temples and use your pointer finger to scrape above and below your eyes for 30s. ', true, 'next step', functions, 3, 0.5)}
-    {Notification('3. Find the points one finger away from your nose and massage the points in circular motion for 30s.', true, 'next step', functions, 2, 0.5)}
-    {Notification('2. Pinch the top part of your nosebridge for 30s.', true, 'next step', functions, 1, 0.5)}
-    {Notification('1. Massage the inner corner of your eyebrows in circular motion for 30s.', true, 'next step', functions, 0, 0.5)}
-    <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={900} backdropOpacity={0.5} onModalHide={functions[0]}>
+    {Notification('5. Look into the distance as far as you can for 30s.', true, 'done!', functions, 4, )}
+    {Notification('4. Place your thumbs on your temples and use your pointer finger to scrape above and below your eyes for 30s. ', true, 'next step', functions, 3, )}
+    {Notification('3. Find the points one finger away from your nose and massage the points in circular motion for 30s.', true, 'next step', functions, 2, )}
+    {Notification('2. Pinch the top part of your nosebridge for 30s.', true, 'next step', functions, 1, )}
+    {Notification('1. Massage the inner corner of your eyebrows in circular motion for 30s.', true, 'next step', functions, 0,)}
+    <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={900} animationOut= {'slideOutRight'} onModalHide={functions[0]}>
       <View style={styles.popupStyle}>
         {/*top row view*/}
         <View style={styles.popupTopRowStyle}>
@@ -59,7 +59,6 @@ export function EyeProtection() {
             <Text style={styles.popupTopRowTextStyle}>reminder!</Text>
           </View>
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-
           </View>
         </View>
         {/*body view*/}

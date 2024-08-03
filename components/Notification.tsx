@@ -4,18 +4,24 @@ import Modal from 'react-native-modal';
 
 //notepad and settings: h = scale2*140 br = 25
 
-export function Notification(content: string, eyeStep: boolean, buttonText: string, functions: Array<()=>void>, index: number, backdropOpacity1: number) {
+export function Notification(content: string, eyeStep: boolean, buttonText: string, functions: Array<()=>void>, index: number) {
 
   const { width } = Dimensions.get('window');
   const { height } = Dimensions.get('window');
   const scale = Math.sqrt(width)/15;
   const scale2 = width/300;
 
-  //eye step size = scale*12 (for eye notids, fontSize=12)
-  //non-eye step size = scale*15 (for water notifs, fontSize=15)
+  let inAnimation: string = "slideInUp";
+  let outAnimation = 'slideOutDown';
+  let inAnimationDuration = 900;
+  //eye step size (for eye notids, fontSize=8)
+  //non-eye step size (for water notifs, fontSize=10)
   let fontSize1 = 10;
   if (eyeStep) {
     fontSize1 = 8;
+    inAnimation = 'slideInLeft';
+    outAnimation = 'slideOutRight';
+    inAnimationDuration = 300;
   } 
 
   function xButton(){
@@ -60,7 +66,7 @@ export function Notification(content: string, eyeStep: boolean, buttonText: stri
   const [isModalVisible, setIsModalVisible] = React.useState(!eyeStep);
   const handleModal = () => setIsModalVisible(!isModalVisible);
 
-  return (<Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={900} backdropOpacity={backdropOpacity1} onModalHide={functions[index+1]}>
+  return (<Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)} animationInTiming={inAnimationDuration} animationIn={inAnimation} animationOut= {outAnimation} onModalHide={functions[index+1]}>
     <View style={styles.popupStyle}>
       {/*top row view*/}
       <View style={styles.popupTopRowStyle}>
