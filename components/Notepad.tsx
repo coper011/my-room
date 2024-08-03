@@ -36,20 +36,30 @@ export function Notepad() {
       marginBottom: '5%',
     },
     textInputStyle: {
-      width: '90%', 
+      width: '85%', 
       height: scale*15, 
       borderRadius: 10,
       fontFamily: 'NerkoOne',
       fontSize: scale*15,
       color: '#2E2929',
-      marginLeft: '1%'
+      marginLeft: '1%',
     },
     });
 
   const [isModalVisible, setIsModalVisible] = React.useState(true);
   const handleModal = () => setIsModalVisible(!isModalVisible);
 
-  const [isSelected, setSelection] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [text, setText] = useState("");
+
+  const addNew = () => {
+    setComments( [...comments, text]);
+    setText("");
+  };
+
+  function addNew1() {
+    return 
+  }
 
   return <View>
     <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)}>
@@ -61,27 +71,30 @@ export function Notepad() {
             <Text style={styles.popupTopRowTextStyle}>notepad</Text>
           </View>
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-          <Pressable onPress={handleModal}><Text style={[styles.popupTopRowTextStyle, {marginRight: scale2*5}]}>X</Text></Pressable>
+          <Pressable onPress={handleModal}><Text style={[styles.popupTopRowTextStyle, {marginRight: scale2*15}]}>X</Text></Pressable>
           </View>
         </View>
         {/*body view*/}
         <View style={{height: '100%', flex: 1}}>
-          <Checkbox value = 'checked' aria-label='aria-label' style={{marginLeft: '5%', marginTop: '5%'}}>
-            <CheckboxIndicator style={{width: scale*15, height: scale*15}}>
-              <View style={{width:'100%', height: '100%', backgroundColor: '#BBB2B2'}}>
-                <CheckboxIcon as={CheckIcon} style={{width: '100%', height: '100%'}} size='lg'></CheckboxIcon>
-              </View>
-            </CheckboxIndicator>
-            <TextInput placeholder=' type here' placeholderTextColor= '#BBB2B2' style={styles.textInputStyle} maxLength={50}/>
-          </Checkbox>
-          <Checkbox value = 'checked' aria-label='aria-label' style={{marginLeft: '5%', marginTop: '5%'}}>
-            <CheckboxIndicator style={{width: scale*15, height: scale*15}}>
-              <View style={{width:'100%', height: '100%', backgroundColor: '#BBB2B2'}}>
-                <CheckboxIcon as={CheckIcon}></CheckboxIcon>
-              </View>
-            </CheckboxIndicator>
-            <TextInput placeholder=' type here' placeholderTextColor= '#BBB2B2' style={styles.textInputStyle} maxLength={50}/>
-          </Checkbox>
+          <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Pressable style={{marginLeft: '5%', marginTop: '2%'}} onPress={addNew}>
+              <Text style={{fontFamily: 'NerkoOne', fontSize: scale*15, color: '#BBB2B2'}}>+ </Text>
+            </Pressable>
+            <TextInput placeholder='add new' placeholderTextColor= '#BBB2B2' style={[styles.textInputStyle, {marginTop: '2%'}]} onChangeText={setText} maxLength={50} value={text}/>
+          </View>
+          {comments.map((comment,index) => (
+            <Checkbox key={index} value = 'checked' aria-label='aria-label' style={{marginLeft: '5%', marginTop: '4%'}}>
+              <CheckboxIndicator style={{width: scale*15, height: scale*15}}>
+                <View style={{width:'100%', height: '100%', backgroundColor: '#BBB2B2'}}>
+                  <CheckboxIcon as={CheckIcon}></CheckboxIcon>
+                </View>
+              </CheckboxIndicator>
+              <CheckboxLabel style={{fontFamily: 'NerkoOne', color: '#2E2929', fontSize: scale*15, width: '85%', marginLeft: '1%', marginTop: '4%'}}>{comment}</CheckboxLabel>
+              <Pressable><Text style={{fontFamily: 'NerkoOne', color: '#BBB2B2', fontSize: scale*15}}>X</Text></Pressable>
+            </Checkbox>
+          ))}
+          </ScrollView>
         </View>
       </View>
     </Modal>
