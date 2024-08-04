@@ -6,7 +6,7 @@ import { CheckIcon } from './ui/icon';
 
 //notepad and settings: h = scale2*140 br = 25
 
-export function Notepad() {
+export function Notepad(handleModal:()=>void) {
 
   const { width } = Dimensions.get('window');
   const { height } = Dimensions.get('window');
@@ -46,8 +46,7 @@ export function Notepad() {
     },
     });
 
-  const [isModalVisible, setIsModalVisible] = React.useState(true);
-  const handleModal = () => setIsModalVisible(!isModalVisible);
+  
 
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
@@ -56,14 +55,13 @@ export function Notepad() {
     setComments( [...comments, text]);
     setText("");
   };
+  const remove = (index: number) => {
+    const all = [...comments];
+    all.splice(index, 1);
+    setComments(all);
+  };
 
-  function addNew1() {
-    return 
-  }
-
-  return <View>
-    <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)}>
-      <View style={styles.popupStyle}>
+  return <View style={styles.popupStyle}>
         {/*top row view*/}
         <View style={styles.popupTopRowStyle}>
           <View style={{flex: 1}}></View>
@@ -90,13 +88,13 @@ export function Notepad() {
                   <CheckboxIcon as={CheckIcon}></CheckboxIcon>
                 </View>
               </CheckboxIndicator>
-              <CheckboxLabel style={{fontFamily: 'NerkoOne', color: '#2E2929', fontSize: scale*15, width: '85%', marginLeft: '1%', marginTop: '4%'}}>{comment}</CheckboxLabel>
-              <Pressable><Text style={{fontFamily: 'NerkoOne', color: '#BBB2B2', fontSize: scale*15}}>X</Text></Pressable>
+              <CheckboxLabel style={{fontFamily: 'NerkoOne', color: '#2E2929', fontSize: scale*15, width: '85%', marginLeft: '1%'}}>{comment}</CheckboxLabel>
+              <Pressable onPress={() => remove(index)}>
+                <Text style={{fontFamily: 'NerkoOne', color: '#BBB2B2', fontSize: scale*15}}>X</Text>
+              </Pressable>
             </Checkbox>
           ))}
           </ScrollView>
         </View>
-      </View>
-    </Modal>
-  </View>;
+      </View>;
 }

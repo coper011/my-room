@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Platform, ImageBackground, View, TextInput, Pressable, Text, ScrollView, Dimensions, } from 'react-native';
 import { TopRow } from '@/components/TopRow';
 import { Shop } from '@/components/Shop';
+import { Settings } from '@/components/Settings';
 
 const { width } = Dimensions.get('window');
 const scale = Math.sqrt(width)/15;
@@ -12,6 +13,7 @@ export default function clothingOutlet() {
     <View style = {{flex: 1, backgroundColor: '#D9D9D9'}}>
       {/*title view*/}
       {TopRow('Clothing Outlet')}
+      {Settings()}
       {/*body view*/}
       {Shop(['tops', 'bottoms', 'shoes', 'accessories'], 
         [{

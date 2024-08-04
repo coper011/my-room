@@ -11,8 +11,8 @@ const scale2 = width/300;
 
 export default function Room() {
 
-  const [isModalVisibleRoom, setIsModalVisibleRoom] = React.useState(false);
-  const handleModalRoom = () => setIsModalVisibleRoom(() => !isModalVisibleRoom);
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const handleModal = () => setIsModalVisible(!isModalVisible);
   
     return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
@@ -20,7 +20,10 @@ export default function Room() {
       <ImageBackground source={require('@/assets/images/lofi girl.jpeg')} resizeMode="cover" style={styles.image}>
       {/*My Room title*/}
       {TopRow('My Room')}
-      {Notepad()}
+      <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)}>
+        {Notepad(handleModal)}
+      </Modal>
+      <Pressable onPress={handleModal}><Text>Notepad</Text></Pressable>
       <View>
       </View>
       </ImageBackground>
