@@ -16,6 +16,7 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     NerkoOne: require('../assets/fonts/NerkoOne-Regular.ttf'),
+    Digital: require('../assets/fonts/Digital-Regular.ttf'),
   });
 
   useEffect(() => {

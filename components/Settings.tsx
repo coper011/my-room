@@ -63,7 +63,7 @@ export function Settings() {
         <View style={{height: '100%', flex: 1}}>
           <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
           {/*volume and alarm*/}
-          <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex:2, margin: '2%'}}>
+          <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex:2, margin: '2%', borderBottomWidth: 2, borderColor: '#7F7D7D'}}>
             <View style={{flexDirection: 'row', flex:1, alignItems: 'center', justifyContent: 'center'}}>
               <Text style={styles.textStyle}>volume:</Text>
               <Slider defaultValue={100} orientation="horizontal" style={{width: '50%', marginLeft: '5%'}}>
@@ -75,7 +75,7 @@ export function Settings() {
             </View>
             <View style={{flexDirection: 'row', flex:1, alignItems: 'center', justifyContent: 'center'}}>
               <Text style={styles.textStyle}>alarm sound:</Text>
-              <Select initialLabel={'alarm'}>
+              <Select initialLabel={'alarm'} style={[{marginLeft: '5%'}]}>
                 <SelectTrigger variant="rounded">
                   <SelectInput placeholder="Select option" />
                   <SelectIcon className="0" as={ChevronDownIcon} />
@@ -86,7 +86,7 @@ export function Settings() {
                     <SelectDragIndicatorWrapper>
                       <SelectDragIndicator />
                     </SelectDragIndicatorWrapper>
-                    <SelectItem label="twinkle" value="twinkle" />
+                    <SelectItem label="twinkle" value="twinkle"/>
                     <SelectItem label="ding" value="ding" />
                   </SelectContent>
                 </SelectPortal>
@@ -96,7 +96,12 @@ export function Settings() {
           {/*set times*/}
           <View style={{flex: 4}}>
             <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex:1}}>
-              <View style={{flex:1}}></View>
+              <View style={{flex:1}}>
+                <Text style={[styles.textStyle, {alignItems: 'center', justifyContent: 'center'}]}>pomodoro:</Text>
+                <View style={{width: scale2*25, height: scale2*15, backgroundColor: '#BBB2B2', marginTop: '3%'}}>
+                  <TextInput style={{height: '100%', width: '100%', fontFamily: 'Digital'}} placeholder='hi' maxLength={2} keyboardType="numeric" />
+                </View>
+              </View>
               <View style={{flex:1}}></View>
               <View style={{flex:1}}></View>
             </View>
