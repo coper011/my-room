@@ -10,7 +10,7 @@ export default function Petstore() {
   return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
       {/*Pet Center title view*/}
-      {TopRow('Pet Center')}
+      {TopRow('Pet Center', false)}
       {Notification('get up and move around!', false, '', [], 0,)}
       {/*Main view*/}
       <View style={{flex:1, flexDirection: 'row', width: '100%'}}>

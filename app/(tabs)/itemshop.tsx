@@ -12,7 +12,7 @@ export default function itemShop() {
   return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9'}}>
       {/*title view*/}
-      {TopRow('Item Shop')}
+      {TopRow('Item Shop', false)}
       {EyeProtection()}
       {/*body view*/}
       {Shop(['desk', 'background', 'garden', 'decorations'], 

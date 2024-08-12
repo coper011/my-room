@@ -29,7 +29,8 @@
     },
     "plugins": [
       "expo-router",
-      ["expo-screen-orientation",{"initialOrientation": "DEFAULT"}]
+      ["expo-screen-orientation",{"initialOrientation": "DEFAULT"}],
+      ["expo-font",{"fonts": ["assets/fonts/NerkoOne-Regular.ttf"]}],
     ],
     "experiments": {
       "typedRoutes": true

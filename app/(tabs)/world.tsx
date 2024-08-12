@@ -8,7 +8,7 @@ export default function World() {
   return (
     <View style = {{backgroundColor: '#89AE80', flex: 1}}>
       {/*top row view*/}
-      {TopRow('My World')}
+      {TopRow('My World', false)}
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly', flex: 1}}>
         {/*House*/}
         <View style={{flex:1, flexDirection: 'row'}}>

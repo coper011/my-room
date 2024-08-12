@@ -2,7 +2,6 @@ import { Image, StyleSheet, ImageBackground, Dimensions, View, TextInput, Pressa
 import React from 'react';
 import { TopRow } from '@/components/TopRow';
 import Modal from 'react-native-modal';
-import { Notepad } from '@/components/Notepad';
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
@@ -10,20 +9,14 @@ const scale = Math.sqrt(width)/15;
 const scale2 = width/300;
 
 export default function Room() {
-
-  const [isModalVisible, setIsModalVisible] = React.useState(false);
-  const handleModal = () => setIsModalVisible(!isModalVisible);
   
     return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
       {/*Backgorund girl image-to be replaced*/}
       <ImageBackground source={require('@/assets/images/lofi girl.jpeg')} resizeMode="cover" style={styles.image}>
       {/*My Room title*/}
-      {TopRow('My Room')}
-      <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)}>
-        {Notepad(handleModal)}
-      </Modal>
-      <Pressable onPress={handleModal}><Text>Notepad</Text></Pressable>
+      {TopRow('My Room', true)}
+      
       <View>
       </View>
       </ImageBackground>

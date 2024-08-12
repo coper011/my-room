@@ -1,14 +1,16 @@
 import { Image, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { View, Pressable, Text } from "react-native";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from "react-native-modal";
+import { Notepad } from '@/components/Notepad';
+import { Settings } from '@/components/Settings';
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 const scale = Math.sqrt(width)/15;
 const scale2 = width/300;
 
-export function TopRow(title: string) {
+export function TopRow(title: string, isRoom: boolean) {
   const styles = StyleSheet.create({
     titleText: {
       marginTop: 20,
@@ -90,6 +92,12 @@ export function TopRow(title: string) {
     },
   });
 
+  const [isNotepadVisible, setIsNotepadVisible] = React.useState(false);
+  const handleNotepad = () => setIsNotepadVisible(!isNotepadVisible);
+
+  const [isSettingsVisible, setIsSettingsVisible] = React.useState(false);
+  const handleSettings = () => setIsSettingsVisible(!isSettingsVisible);
+
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
@@ -104,14 +112,58 @@ export function TopRow(title: string) {
 
   const [isClosetVisible, setIsClosetVisible] = React.useState(false);
   const handleCloset = () => setIsClosetVisible(() => !isClosetVisible);
+
+  const [currentTime, setCurrentTime] = useState(String);
+  useEffect(() => {
+    const time = setInterval(() => {
+      const date = new Date();
+      let formatter = new Intl.DateTimeFormat('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+      setCurrentTime(formatter.format(date));
+    }, 1000);
+    return () => clearInterval(time)
+  }, []);
+
+  function displayClock() {
+    if(isRoom) {
+      return <View style={{backgroundColor: '#2E2929', width: '80%', height: '90%', marginLeft: '5%', justifyContent: 'center', alignItems: 'center', borderColor: '#d9d9d9', borderWidth: scale*4, borderRadius: scale*5, marginTop: '10%'}}>
+        <Text style={{fontFamily: 'NerkoOne', color: '#C7A578', fontSize: scale*25, textAlign: 'center'}}>{currentTime}</Text>
+      </View>;
+    }
+  }
+  //icons = notepad, settings, and world
+  function displayIcons() {
+    if(isRoom) {
+      return <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      {/*notepad modal*/}
+      <Pressable onPress={handleNotepad}><Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/></Pressable>
+      <Modal isVisible={isNotepadVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)}>
+        {Notepad(handleNotepad)}
+      </Modal>
+      {/*settings modal*/}
+      <Pressable onPress={handleSettings}><Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/></Pressable>
+      <Modal isVisible={isSettingsVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)}>
+        {Settings(handleSettings)}
+      </Modal>
+      {/*world icon*/}
+      <Pressable onPress={handleModal}><Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/></Pressable>
+      </View>
+    }
+  }
   
   return <View style={styles.titleView}>
-  <View style={{flex: 1}}></View>
+  <View style={{flex: 1, justifyContent: 'center'}}>
+    {displayClock()}
+  </View>
   <View style={{flex: 1, alignItems: 'center'}}>
-  <Text style={styles.titleText}>{title}</Text>
+    <Text style={styles.titleText}>{title}</Text>
   </View>
   {/*stats view*/}
-  <View style={{flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}}>
+  <View style={{flex: 1, justifyContent: 'flex-end', flexDirection: 'row', }}>
+    {displayIcons()}
     {/*inventory modal*/}
     <Pressable onPress={handleModal}><Image source={require('@/assets/images/copper.webp')} style={{resizeMode: 'center', width: 30, height: '100%', marginRight: '5%'}}/></Pressable>
     <Modal isVisible={isModalVisible} deviceHeight={Math.min(width,height)} deviceWidth={Math.max(width,height)/*Modal bug @ iPad landscape*/}>

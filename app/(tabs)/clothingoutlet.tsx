@@ -12,8 +12,8 @@ export default function clothingOutlet() {
   return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9'}}>
       {/*title view*/}
-      {TopRow('Clothing Outlet')}
-      {Settings()}
+      {TopRow('Clothing Outlet', false)}
+      
       {/*body view*/}
       {Shop(['tops', 'bottoms', 'shoes', 'accessories'], 
         [{
