@@ -1,11 +1,88 @@
 import { Image, StyleSheet, Platform, ImageBackground, View, TextInput, Pressable, Text, ScrollView, Dimensions, } from 'react-native';
 import { TopRow } from '@/components/TopRow';
 import { Notification } from '@/components/Notification';
+import React from 'react';
 
 const { width } = Dimensions.get('window');
 const scale = Math.sqrt(width)/15;
 
 export default function Petstore() {
+
+  const [selection, setSelection] = React.useState(0);
+{/*imags needed*/}
+const pets = [{
+  name: 'copper',
+  age: 4,
+  description: 'Calico cat that exhibits affectionate behavior towards humans but is devious towards other felines. Is slightly overweight, and prefers to play with string-like items - including wires.',
+  price: 200,
+  headshot: require('@/assets/images/copper.webp'),
+  bodyshot:'@/assets/images/xuncat.png',
+  realpicture: '@/assets/images/xuncat.png',
+  lvlUnlocked: 1,
+}, 
+{
+  name: 'benji',
+  age: 3,
+  description: 'Lucky dog that sometimes looks like a cute puppy, and other times looks like an old man. Enjoys car rides but is very stinky. Will also remain tiny forever.',
+  price: 300,
+  headshot: require('@/assets/images/xuncat.png'),
+  bodyshot:'@/assets/images/xuncat.png',
+  realpicture: '@/assets/images/xuncat.png',
+  lvlUnlocked: 3,
+}, 
+{
+  name: 'kitty',
+  age: 3,
+  description: 'Cute gray cat with a peaceful and calm demeanor. Friendly towards other cats and likes to play.',
+  price: 1200,
+  headshot: require('@/assets/images/xuncat.png'),
+  bodyshot:'@/assets/images/xuncat.png',
+  realpicture: '@/assets/images/xuncat.png',
+  lvlUnlocked: 5,
+},
+{
+  name: 'lulu aka. “jay doggle',
+  age: 5,
+  description: 'Playful dog with a fluffy and curly caramel colored coat. Board-certified cutie and princess. Origins of the nickname “jay doggle” unknown.',
+  price: 5000,
+  headshot: require('@/assets/images/xuncat.png'),
+  bodyshot:'@/assets/images/xuncat.png',
+  realpicture: '@/assets/images/xuncat.png',
+  lvlUnlocked: 10,
+},
+{
+  name: 'gros chat',
+  age: 3,
+  description: 'Cute gray cat with a peaceful and calm demeanor. Friendly towards other cats and likes to play.',
+  price: 8000,
+  headshot: require('@/assets/images/xuncat.png'),
+  bodyshot:'@/assets/images/xuncat.png',
+  realpicture: '@/assets/images/xuncat.png',
+  lvlUnlocked: 13,
+},
+{
+  name: 'allen',
+  age: 6.25,
+  description: 'A pink beaver…abnormally large…',
+  price: 14000,
+  headshot: require('@/assets/images/xuncat.png'),
+  bodyshot:'@/assets/images/xuncat.png',
+  realpicture: '@/assets/images/xuncat.png',
+  lvlUnlocked: 17,
+},
+{
+  name: 'lev',
+  age: 2,
+  description: 'The fluffiest angel in the sky.',
+  price: 25000,
+  headshot: require('@/assets/images/xuncat.png'),
+  bodyshot:'@/assets/images/xuncat.png',
+  realpicture: '@/assets/images/xuncat.png',
+  lvlUnlocked: 20,
+}];
+const handles = pets.map(
+  (pet,index)=> ()=> setSelection(()=> index)
+);
   
   return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
@@ -17,40 +94,15 @@ export default function Petstore() {
         {/*Scroll column*/}
         <View style={{height: '100%', flex: 1, width: '100%'}}>
           <ScrollView style={{width: '100%'}} contentContainerStyle={{flexGrow:1}}>
-            {/*copper*/}
-            <View style={styles.circle}>
-              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-            </View>
-            {/*benji*/}
-            <View style={styles.circle}>
-              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-              <View style={[styles.unlockCircle]}></View>
-            </View>
-            {/*kitty*/}
-            <View style={styles.circle}>
-              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-              <View style={[styles.unlockCircle]}></View>
-            </View>
-            {/*lulu*/}
-            <View style={styles.circle}>
-              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-              <View style={[styles.unlockCircle]}></View>
-            </View>
-            {/*gros chat*/}
-            <View style={styles.circle}>
-              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-              <View style={[styles.unlockCircle]}></View>
-            </View>
-            {/*alan in loopi drip*/}
-            <View style={styles.circle}>
-              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-              <View style={[styles.unlockCircle]}></View>
-            </View>
-            {/*lev*/}
-            <View style={[styles.circle, {marginBottom: '20%'}]}>
-              <Image source={require('@/assets/images/xuncat.png')} style={styles.petIcon}></Image>
-              <View style={[styles.unlockCircle]}></View>
-            </View>
+            {pets.map(
+              (pet,index)=> 
+              <View style={styles.circle} key={'selection'+index}>
+                <Pressable onPress={handles[index]}>
+                <Image source={pets[selection].headshot} style={styles.petIcon}></Image>
+                  <View style={styles.unlockCircle}></View>
+                </Pressable>
+              </View>
+            )}
           </ScrollView>
         </View>
         {/*Pet display*/}
@@ -72,11 +124,11 @@ export default function Petstore() {
               {/*age, name*/}
               <View style={{flexDirection: 'row'}}>
                 <Text style={[styles.textFont, {marginLeft: '10%'}]}>name: </Text>
-                <Text style={[styles.textFont, {color: '#D9D9D9'}]}>kitty</Text>
+                <Text style={[styles.textFont, {color: '#D9D9D9'}]}>{pets[selection] ['name']}</Text>
               </View>
               <View style={{flexDirection: 'row'}}>
               <Text style={[styles.textFont, {marginLeft: '10%'}]}>age: </Text>
-              <Text style={[styles.textFont, {color: '#D9D9D9'}]}>3</Text>
+              <Text style={[styles.textFont, {color: '#D9D9D9'}]}>{pets[selection] ['age']}</Text>
               </View>
             </View>
             {/*image*/}
@@ -87,13 +139,13 @@ export default function Petstore() {
           {/*details and button view*/}
           <View style={{flex: 1, justifyContent: 'space-between'}}>
             <View style={{}}>
-              <Text style={[styles.textFont, {marginLeft: '5%', color: '#D9D9D9', fontSize: 10 * scale}]}>Cute gray cat with a peaceful and calm demeanor. Friendly and likes to play.</Text>
+              <Text style={[styles.textFont, {marginLeft: '5%', color: '#D9D9D9', fontSize: 10 * scale}]}>{pets[selection] ['description']}</Text>
             </View>
             <View style={{}}>
               <Pressable onPress={() => console.log('Hello')} style={styles.buttonStyle}>
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex:1}}>
                   <Text style={[styles.textFont, {color: '#503D32'}]}>adopt (</Text>
-                  <Text style={[styles.textFont, {color: '#503D32'}]}>200</Text>
+                  <Text style={[styles.textFont, {color: '#503D32'}]}>{pets[selection] ['price']}</Text>
                   <Text style={[styles.textFont, {color: '#503D32'}]}>)</Text>
                 </View>
               </Pressable>
