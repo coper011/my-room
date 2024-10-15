@@ -126,6 +126,7 @@ const userPets = [{
         </View>
         {/*Pet info*/}
         <View style={{height: '100%', flex: 3, backgroundColor: '#503D32'}}>
+          <ScrollView>
           {/*"profile", age, name, and image view*/}
           <View style={{flexDirection: 'row', flex: 1}}>
             {/*"profile", age, name*/}
@@ -162,8 +163,10 @@ const userPets = [{
               </Pressable>
             </View>
           </View>
+          </ScrollView>
         </View>
       </View>
+      
     </View>
   );
 }

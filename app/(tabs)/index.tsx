@@ -27,7 +27,7 @@ export default function HomeScreen() {
   let createSession = async () => {
     try {
 
-      await account.createSession(usernameValue, passwordValue);
+      await account.createEmailPasswordSession(usernameValue, passwordValue);
       getAccount();
       setUser('user login success');
     } catch (e) {

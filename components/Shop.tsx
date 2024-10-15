@@ -64,8 +64,8 @@ export function Shop(categories: Array<string>, items: Array<any>) {
       categories.map(
         (category,index)=>
           <View style={styles.categoryView} key={'categorySection'+index}>
-        <Text style={[styles.textStyle, {color: '#503D32'}]}>{category}</Text>
-      </View>
+            <Text style={[styles.textStyle, {color: '#503D32'}]}>{category}</Text>
+          </View>
       )
     }
   </View>
