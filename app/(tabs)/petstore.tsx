@@ -83,6 +83,17 @@ const pets = [{
 const handles = pets.map(
   (pet,index)=> ()=> setSelection(()=> index)
 );
+const userPets = [{
+  equipped: 0,
+  owned: [0, 1, 2],
+}];
+/*function displayCover() {
+  if(userPets.includes()) {
+    return <View>
+    </View>;
+  }
+}
+*/
   
   return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignItems: "center"}}>
