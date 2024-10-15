@@ -16,8 +16,8 @@ const pets = [{
   description: 'Calico cat that exhibits affectionate behavior towards humans but is devious towards other felines. Is slightly overweight, and prefers to play with string-like items - including wires.',
   price: 200,
   headshot: require('@/assets/images/copper.webp'),
-  bodyshot:'@/assets/images/xuncat.png',
-  realpicture: '@/assets/images/xuncat.png',
+  bodyshot:require('@/assets/images/copper.webp'),
+  realpicture: require('@/assets/images/copper.webp'),
   lvlUnlocked: 1,
 }, 
 {
@@ -25,9 +25,9 @@ const pets = [{
   age: 3,
   description: 'Lucky dog that sometimes looks like a cute puppy, and other times looks like an old man. Enjoys car rides but is very stinky. Will also remain tiny forever.',
   price: 300,
-  headshot: require('@/assets/images/xuncat.png'),
-  bodyshot:'@/assets/images/xuncat.png',
-  realpicture: '@/assets/images/xuncat.png',
+  headshot: require('@/assets/images/benji.png'),
+  bodyshot:require('@/assets/images/benji.png'),
+  realpicture: require('@/assets/images/benji.png'),
   lvlUnlocked: 3,
 }, 
 {
@@ -35,29 +35,29 @@ const pets = [{
   age: 3,
   description: 'Cute gray cat with a peaceful and calm demeanor. Friendly towards other cats and likes to play.',
   price: 1200,
-  headshot: require('@/assets/images/xuncat.png'),
-  bodyshot:'@/assets/images/xuncat.png',
-  realpicture: '@/assets/images/xuncat.png',
+  headshot: require('@/assets/images/kitty.png'),
+  bodyshot:require('@/assets/images/kitty.png'),
+  realpicture: require('@/assets/images/kitty.png'),
   lvlUnlocked: 5,
 },
 {
-  name: 'lulu aka. “jay doggle',
+  name: 'lulu',
   age: 5,
   description: 'Playful dog with a fluffy and curly caramel colored coat. Board-certified cutie and princess. Origins of the nickname “jay doggle” unknown.',
   price: 5000,
-  headshot: require('@/assets/images/xuncat.png'),
-  bodyshot:'@/assets/images/xuncat.png',
-  realpicture: '@/assets/images/xuncat.png',
+  headshot: require('@/assets/images/lulu.png'),
+  bodyshot:require('@/assets/images/lulu.png'),
+  realpicture: require('@/assets/images/lulu.png'),
   lvlUnlocked: 10,
 },
 {
-  name: 'gros chat',
+  name: 'groschat',
   age: 3,
   description: 'Cute gray cat with a peaceful and calm demeanor. Friendly towards other cats and likes to play.',
   price: 8000,
   headshot: require('@/assets/images/xuncat.png'),
-  bodyshot:'@/assets/images/xuncat.png',
-  realpicture: '@/assets/images/xuncat.png',
+  bodyshot:require('@/assets/images/xuncat.png'),
+  realpicture: require('@/assets/images/xuncat.png'),
   lvlUnlocked: 13,
 },
 {
@@ -65,9 +65,9 @@ const pets = [{
   age: 6.25,
   description: 'A pink beaver…abnormally large…',
   price: 14000,
-  headshot: require('@/assets/images/xuncat.png'),
-  bodyshot:'@/assets/images/xuncat.png',
-  realpicture: '@/assets/images/xuncat.png',
+  headshot: require('@/assets/images/allensub.png'),
+  bodyshot:require('@/assets/images/allensub.png'),
+  realpicture: require('@/assets/images/allensub.png'),
   lvlUnlocked: 17,
 },
 {
@@ -76,8 +76,8 @@ const pets = [{
   description: 'The fluffiest angel in the sky.',
   price: 25000,
   headshot: require('@/assets/images/xuncat.png'),
-  bodyshot:'@/assets/images/xuncat.png',
-  realpicture: '@/assets/images/xuncat.png',
+  bodyshot:require('@/assets/images/xuncat.png'),
+  realpicture: require('@/assets/images/xuncat.png'),
   lvlUnlocked: 20,
 }];
 const handles = pets.map(
@@ -98,7 +98,7 @@ const handles = pets.map(
               (pet,index)=> 
               <View style={styles.circle} key={'selection'+index}>
                 <Pressable onPress={handles[index]}>
-                <Image source={pets[selection].headshot} style={styles.petIcon}></Image>
+                <Image source={pets[index].headshot} style={styles.petIcon}></Image>
                   <View style={styles.unlockCircle}></View>
                 </Pressable>
               </View>
@@ -108,7 +108,7 @@ const handles = pets.map(
         {/*Pet display*/}
         <View style={{height: '100%', flex: 3}}>
           <View style={{backgroundColor: '#C7A579', flex: 3, justifyContent: 'flex-end'}}>
-          <Image source={require('@/assets/images/xuncat.png')} style={{resizeMode: 'contain', width:'100%', height: '80%'}}></Image>
+          <Image source={pets[selection].bodyshot} style={{resizeMode: 'contain', width:'100%', height: '80%'}}></Image>
           </View>
           <View style={{backgroundColor:'#A1663C', flex:1}}>
           </View>
@@ -133,7 +133,7 @@ const handles = pets.map(
             </View>
             {/*image*/}
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-            <Image source={require('@/assets/images/copper.webp')} style={styles.petImage}></Image>
+            <Image source={pets[selection].realpicture} style={styles.petImage}></Image>
             </View>
           </View>
           {/*details and button view*/}
