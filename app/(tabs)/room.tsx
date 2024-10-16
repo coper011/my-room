@@ -2,6 +2,7 @@ import { Image, StyleSheet, ImageBackground, Dimensions, View, TextInput, Pressa
 import React, { useEffect, useState } from 'react';
 import { TopRow } from '@/components/TopRow';
 import Modal from 'react-native-modal';
+import { BackEnd, myObject, setMyObject, updateDocument } from '@/components/BackEnd';
 
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
@@ -52,7 +53,7 @@ export default function Room() {
           {/*timer top view*/}
           <View style={{width: '100%', height: scale*27, backgroundColor: '#2E2929', flexDirection: 'row'}}>
             <View style={styles.timerTopRowClearView}>
-              <Pressable style={styles.timerPressableView}>
+              <Pressable style={styles.timerPressableView} onPress = {()=>{++myObject.lvl;updateDocument()}}>
                 <Text style={styles.timerTextStyle}>pomodoro</Text>
               </Pressable>
             </View>

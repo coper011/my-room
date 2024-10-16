@@ -2,16 +2,19 @@ import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { View, TextInput, Pressable, Text, ScrollView } from "react-native";
 import React, { useState, useEffect } from 'react';
 import * as ScreenOrientation from 'expo-screen-orientation';
+import { BackEnd, myObject, setDocumentId, setMyObject } from '@/components/BackEnd';
 import { Account, Client, Permission, Role, Storage, Models, Databases, ID, RealtimeResponseEvent } from 'react-native-appwrite';
 
 let client: Client;
 let account: Account;
 let storage;
-let databases;
+let databases: Databases;
 
 export default function HomeScreen() {
   const [user, setUser] = useState('');
   let subscription;
+  const [usernameValue, setUsernameValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
 
   let setupAppwrite = async () => {
     client = new Client();
@@ -25,13 +28,21 @@ export default function HomeScreen() {
     setupAppwrite();
   }
   let createSession = async () => {
+    let documentId;
     try {
 
       await account.createEmailPasswordSession(usernameValue, passwordValue);
       getAccount();
-      setUser('user login success');
+      setUser('logged in as ' + usernameValue);
+      const result = await databases.getDocument(
+        'UserData', // databaseId
+        '66c1419c00005e239e4a', // collectionId
+        documentId=(await account.get()).$id // documentId
+      );
+      setMyObject(result);
+      setDocumentId(documentId);
     } catch (e) {
-      setUser('woops! try again! please double-check your username or password' + usernameValue + passwordValue + e);
+      setUser('woops! try again! please double-check your email or password' + e + documentId);
 
     }
   }
@@ -39,17 +50,18 @@ export default function HomeScreen() {
     try{
       await account.createAnonymousSession();
       getAccount();
-      setUser('anonymous login success');
+      setUser('logged in as anonymous');
+      
     } catch (e) {
-      setUser('failed to login anonymously\t'+ e);
+      setUser('woops! try again! '+ e);
     }
 }
   let logout = async () => {
     try {
     await account.deleteSession('current');
-    setUser('user logout success');
+    setUser('user logged out');
     } catch (e) {
-      setUser('failed to logout\t'+ e);
+      setUser('woops! try again! '+ e);
     }
   }
 
@@ -57,7 +69,8 @@ export default function HomeScreen() {
     let user = (await account.get()).name;
     //setUser(user);
   }
-
+  BackEnd();
+  
 
   const [orientation, setOrientation] = useState(1);
   useEffect(() => {
@@ -71,9 +84,6 @@ export default function HomeScreen() {
     setOrientation(o);
   };
 
-  const [usernameValue, setUsernameValue] = useState('');
-  const [passwordValue, setPasswordValue] = useState('');
-
   return (
     <View style = {{flex: 1, backgroundColor: '#D9D9D9', alignContent: 'center'}}>
       <ScrollView style={{width: '100%'}}>
@@ -84,12 +94,12 @@ export default function HomeScreen() {
       {/*username and password input boxes*/}
       <View style={{width: '100%', alignItems: 'center'}}>
         <View style={styles.stepContainer}>
-          <Text style={styles.textStyle}>username:</Text>
+          <Text style={styles.textStyle}>email:</Text>
           <TextInput 
           value = {usernameValue}
           onChangeText={setUsernameValue}
           style={styles.textInputStyle}
-          placeholder='   copperstudies'
+          placeholder='   copperstudies@gmail.com'
           />
         </View>
         <View style={styles.stepContainer}>
@@ -105,9 +115,9 @@ export default function HomeScreen() {
         </View>
         <View style={{marginTop: 20}}>
           <Pressable style={styles.buttonStyle} onPress={createSession} ><Text style={styles.buttonTextStyle}>LOG IN</Text></Pressable>
-          <TouchableOpacity style={{marginTop: 5}} onPress={logout}>
+          <Pressable style={{marginTop: 5}} onPress={logout}>
             <Text style={{color: '#2E2929', fontFamily: "NerkoOne", textAlign: 'center'} }>REGISTER</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View style={{marginBottom: 40}}>
           <Pressable style={styles.buttonStyle} onPress={createAnonymousSession}><Text style={styles.buttonTextStyle}>ANONYMOUS LOGIN</Text></Pressable>
