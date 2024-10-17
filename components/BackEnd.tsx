@@ -91,7 +91,7 @@ export let myObject = {
     //}
   ]};
 export function setMyObject(newMyObject: any) {
-  myObject = newMyObject.addressed;
+  myObject = JSON.parse(newMyObject.addressed);
 }
 export function BackEnd() {
   
